@@ -1,0 +1,26 @@
+@import "./colors";
+
+html {
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+// These are nice to have, but can cause trouble in the H5P editor
+// *:before, *:after {
+//   box-sizing: inherit;
+// }
+
+.h5p-3d-model-viewer {
+  background-color: $color-background;
+  color: $color-text;
+  width: 100%;
+
+  .h5p-3d-model-viewer-main {
+    height: inherit;
+    margin: auto;
+    width: inherit;
+  }
+}
