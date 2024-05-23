@@ -8,10 +8,13 @@ export default class ThreeDModelView {
     this.params = Util.extend({}, params);
 
     this.callbacks = Util.extend({
-      onLoad: () => {}
+      onModelLoaded: () => {}
     }, callbacks);
 
-    this.buildDOM();
+    this.dom = this.buildDOM(this.params);
+
+    // Set model source, initiates loading the model
+    this.dom.setAttribute('src', this.params.src);
   }
 
   /**
@@ -22,36 +25,38 @@ export default class ThreeDModelView {
     return this.dom;
   }
 
-  buildDOM() {
+  /**
+   * Buid DOM.
+   * @param {object} params Parameters.
+   * @returns {HTMLElement} DOM.
+   */
+  buildDOM(params = {}) {
     // model-viewer is custom element expected by @google/model-viewer
-    this.dom = document.createElement('model-viewer');
+    const dom = document.createElement('model-viewer');
 
-    this.dom.classList.add('threed-model-view');
-    if (this.params.className) {
-      this.dom.classList.add(this.params.className);
+    dom.classList.add('threed-model-view');
+    if (params.className) {
+      dom.classList.add(params.className);
+    }
+    dom.style.maxWidth = params.size?.maxWidth ?? '';
+    dom.style.maxHeight = params.size?.maxHeight ?? '';
+    dom.setAttribute('camera-controls', '');
+
+    if (params.poster) {
+      dom.setAttribute('poster', params.poster);
     }
 
-    if (this.params.size.maxWidth) {
-      this.dom.style.maxWidth = this.params.size.maxWidth;
+    if (params.alt) {
+      dom.setAttribute('alt', params.alt);
     }
+    dom.setAttribute('a11y', this.buildA11y(params.a11y));
 
-    if (this.params.size.maxHeight) {
-      this.dom.style.maxHeight = this.params.size.maxHeight;
-    }
-
-    this.dom.setAttribute('camera-controls', '');
-
-    if (this.params.alt) {
-      this.dom.setAttribute('alt', this.params.alt);
-    }
-
-    this.dom.setAttribute('a11y', this.buildA11y(this.params.a11y));
-
-    this.dom.addEventListener('load', () => {
-      this.callbacks.onLoad();
+    dom.addEventListener('load', () => {
+      this.updateAspectRatio();
+      this.callbacks.onModelLoaded();
     });
 
-    this.setModel(this.params.src);
+    return dom;
   }
 
   /**
@@ -90,14 +95,28 @@ export default class ThreeDModelView {
 
   /**
    * Update the DOMs aspect ratio.
+   * @param {object} ratio Aspect ratio.
    */
-  updateAspectRatio() {
-    const dimensions = this.getDimensions();
-    if (!dimensions) {
+  updateAspectRatio(ratio) {
+    let newAspectRatio;
+
+    if (typeof ratio === 'number' && ratio > 0) {
+      newAspectRatio = ratio;
+    }
+
+    if (!newAspectRatio) {
+      // Try to get model dimensions for ratio
+      const dimensions = this.getDimensions();
+      if (dimensions?.x > 0 && dimensions?.y > 0) {
+        newAspectRatio = dimensions.x / dimensions.y;
+      }
+    }
+
+    if (!newAspectRatio) {
       return;
     }
 
-    this.dom.style.aspectRatio = `${dimensions.x} / ${dimensions.y}`;
+    this.dom.style.aspectRatio = newAspectRatio;
   }
 
   /**

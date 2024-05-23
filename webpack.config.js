@@ -77,12 +77,12 @@ export default {
       },
       {
         test: /\.svg|\.jpg|\.png$/,
-        include: join(__dirname, 'src/images'),
+        include: join(__dirname, 'src/assets'),
         type: 'asset/resource'
       },
       {
         test: /\.mp3|\.wav$/,
-        include: join(__dirname, 'src/audio'),
+        include: join(__dirname, 'src/assets'),
         type: 'asset/resource'
       },
       {

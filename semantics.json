@@ -21,6 +21,13 @@
         "type": "text",
         "label": "Alternative text",
         "description": "Alternative text for screen readers."
+      },
+      {
+        "name": "poster",
+        "type": "image",
+        "label": "Poster image",
+        "description": "Optional image that will be shown before the 3D model is loaded. This can be used to show a preview of the 3D model.",
+        "optional": true
       }
     ]
   },

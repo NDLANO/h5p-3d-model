@@ -30,28 +30,41 @@ export default class ThreeDModel extends H5P.EventDispatcher {
 
     this.previousState = extras?.previousState || {};
 
+    // Retrieve true local source
     const element = document.createElement('div');
     H5P.setSource(
       element, { path: this.params.model?.file?.path ?? '' }, this.contentId
     );
 
+    // Optional poster
+    const poster = document.createElement('img');
+    if (this.params.model?.poster?.path) {
+      poster.addEventListener('load', () => {
+        this.model.updateAspectRatio(
+          poster.naturalWidth / poster.naturalHeight
+        );
+
+        this.trigger('resize');
+      });
+      H5P.setSource(
+        poster, { path: this.params.model.poster.path }, this.contentId
+      );
+    }
+
     this.model = new ThreeDModelView({
       src: element.src,
+      poster: poster.src,
       className: 'h5p-3d-model-main',
       alt: this.params.model.alt,
       size: this.params.size,
-      a11y: this.params.a11y,
+      a11y: this.params.a11y
     }, {
-      onLoad: () => {
+      onModelLoaded: () => {
         this.trigger('resize');
       }
     });
 
     this.dom = this.model.getDOM();
-
-    this.on('resize', () => {
-      this.model.updateAspectRatio();
-    });
   }
 
   /**
@@ -70,7 +83,7 @@ export default class ThreeDModel extends H5P.EventDispatcher {
   getTitle() {
     // H5P Core function: createTitle
     return H5P.createTitle(
-      this.extras?.metadata?.title || ThreeDModelViewer.DEFAULT_DESCRIPTION
+      this.extras?.metadata?.title || ThreeDModel.DEFAULT_DESCRIPTION
     );
   }
 
