@@ -26,7 +26,7 @@
         "name": "poster",
         "type": "image",
         "label": "Poster image",
-        "description": "Optional image that will be shown before the 3D model is loaded. This can be used to show a preview of the 3D model.",
+        "description": "Optional image that will be shown before the 3D model is loaded. This can be used to show a preview of the 3D model that is large and may need some time to load. Not that it makes only sense to add a poster image if the file is not too large in size itself.",
         "optional": true
       }
     ]
