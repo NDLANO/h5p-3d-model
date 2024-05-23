@@ -1,7 +1,7 @@
 {
-  "name": "h5p-3d-model-viewer",
+  "name": "h5p-3d-model",
   "version": "1.0.0",
-  "description": "Simple 3D model viewer for H5P",
+  "description": "Simple 3D model (viewer) for H5P",
   "private": true,
   "scripts": {
     "lint": "stylelint './src/**/*.scss' && eslint './src/**/*.js'",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ndlano/h5p-3d-model-viewer.git"
+    "url": "git+https://github.com/ndlano/h5p-3d-model.git"
   },
   "keywords": [
     "h5p",

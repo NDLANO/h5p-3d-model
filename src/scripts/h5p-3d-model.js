@@ -1,11 +1,11 @@
 import Util from '@services/util.js';
 import H5PUtil from '@services/h5p-util.js';
 import Dictionary from '@services/dictionary.js';
-import ThreeDModel from '@components/threed-model.js';
+import ThreeDModelView from '@components/threed-model-view.js';
 
-import '@styles/h5p-3d-model-viewer.scss';
+import '@styles/h5p-3d-model.scss';
 
-export default class ThreeDModelViewer extends H5P.EventDispatcher {
+export default class ThreeDModel extends H5P.EventDispatcher {
   /**
    * @class
    * @param {object} params Parameters passed by the editor.
@@ -35,9 +35,9 @@ export default class ThreeDModelViewer extends H5P.EventDispatcher {
       element, { path: this.params.model?.file?.path ?? '' }, this.contentId
     );
 
-    this.model = new ThreeDModel({
+    this.model = new ThreeDModelView({
       src: element.src,
-      className: 'h5p-3d-model-viewer-main',
+      className: 'h5p-3d-model-main',
       alt: this.params.model.alt,
       size: this.params.size,
       a11y: this.params.a11y,
@@ -59,7 +59,7 @@ export default class ThreeDModelViewer extends H5P.EventDispatcher {
    * @param {H5P.jQuery} $wrapper Content's container.
    */
   attach($wrapper) {
-    $wrapper.get(0).classList.add('h5p-3d-model-viewer');
+    $wrapper.get(0).classList.add('h5p-3d-model');
     $wrapper.get(0).appendChild(this.dom);
   }
 
@@ -79,9 +79,9 @@ export default class ThreeDModelViewer extends H5P.EventDispatcher {
    * @returns {string} Description.
    */
   getDescription() {
-    return ThreeDModelViewer.DEFAULT_DESCRIPTION;
+    return ThreeDModel.DEFAULT_DESCRIPTION;
   }
 }
 
 /** @constant {string} Default description */
-ThreeDModelViewer.DEFAULT_DESCRIPTION = '3D Model Viewer';
+ThreeDModel.DEFAULT_DESCRIPTION = '3D Model';

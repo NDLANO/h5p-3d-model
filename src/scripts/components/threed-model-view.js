@@ -1,8 +1,8 @@
 import '@google/model-viewer';
 import  Util from '@services/util.js';
-import './threed-model.scss';
+import './threed-model-view.scss';
 
-export default class ThreeDModel {
+export default class ThreeDModelView {
 
   constructor(params = {}, callbacks = {}) {
     this.params = Util.extend({}, params);
@@ -26,7 +26,7 @@ export default class ThreeDModel {
     // model-viewer is custom element expected by @google/model-viewer
     this.dom = document.createElement('model-viewer');
 
-    this.dom.classList.add('threed-model');
+    this.dom.classList.add('threed-model-view');
     if (this.params.className) {
       this.dom.classList.add(this.params.className);
     }

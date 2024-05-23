@@ -1,5 +1,5 @@
 {
-  "title": "3D Model Viewer",
+  "title": "3D Model",
   "description": "Simple 3D model viewer",
   "majorVersion": 1,
   "minorVersion": 0,
@@ -7,18 +7,18 @@
   "runnable": 1,
   "author": "NDLA, Oliver Tacke",
   "license": "MIT",
-  "machineName": "H5P.ThreeDModelViewer",
+  "machineName": "H5P.ThreeDModel",
   "embedTypes": [
     "iframe"
   ],
   "preloadedJs": [
     {
-      "path": "dist/h5p-3d-model-viewer.js"
+      "path": "dist/h5p-3d-model.js"
     }
   ],
   "preloadedCss": [
     {
-      "path": "dist/h5p-3d-model-viewer.css"
+      "path": "dist/h5p-3d-model.css"
     }
   ],
   "editorDependencies": [

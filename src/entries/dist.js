@@ -1,4 +1,4 @@
-import ThreeDModelViewer from '@scripts/h5p-3d-model-viewer.js';
+import ThreeDModel from '@scripts/h5p-3d-model.js';
 
 // Load library
-H5P.ThreeDModelViewer = ThreeDModelViewer;
+H5P.ThreeDModel = ThreeDModel;

@@ -1,5 +1,5 @@
-# H5P 3D Model Viewer
-Simple viewer for 3D models
+# H5P 3D Model
+Simple viewer for 3D models in H5P
 
 ## Getting started
 Clone this repository with git and check out the branch that you are interested
