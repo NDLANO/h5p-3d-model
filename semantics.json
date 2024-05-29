@@ -13,7 +13,10 @@
         "type": "file",
         "widget": "threeDModel",
         "threeDModelLoader": {
-          "fileTypeExtensions": ["gltf", "glb"],
+          "fileTypeExtensions": [
+            "gltf",
+            "glb"
+          ],
           "altPath": "alt"
         }
       },
@@ -64,6 +67,26 @@
         "label": "Maximum height",
         "description": "H5P will usually determine the height based on the width. Set a maximum height here in CSS units (px, rem, etc.). Please not that this will not influence the maximum height of the H5P content as a whole.",
         "optional": true
+      }
+    ]
+  },
+  {
+    "name": "l10n",
+    "type": "group",
+    "label": "User interface",
+    "common": true,
+    "fields": [
+      {
+        "name": "noModel",
+        "type": "text",
+        "label": "No model found",
+        "default": "Could not load a 3D model. Did someone forget to upload one?"
+      },
+      {
+        "name": "dummy",
+        "type": "text",
+        "label": "dummy",
+        "default": "dummy"
       }
     ]
   },

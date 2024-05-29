@@ -2,6 +2,7 @@ import Util from '@services/util.js';
 import H5PUtil from '@services/h5p-util.js';
 import Dictionary from '@services/dictionary.js';
 import ThreeDModelView from '@components/threed-model-view.js';
+import MessageBox from '@components/messageBox/message-box.js';
 
 import '@styles/h5p-3d-model.scss';
 
@@ -29,6 +30,14 @@ export default class ThreeDModel extends H5P.EventDispatcher {
     this.dictionary.fill({ l10n: this.params.l10n, a11y: this.params.a11y });
 
     this.previousState = extras?.previousState || {};
+
+    if (!this.params.model?.file?.path) {
+      const messageBox = new MessageBox({
+        text: this.dictionary.get('l10n.noModel')
+      });
+      this.dom = messageBox.getDOM();
+      return;
+    }
 
     // Retrieve true local source
     const element = document.createElement('div');
@@ -74,7 +83,7 @@ export default class ThreeDModel extends H5P.EventDispatcher {
   attach($wrapper) {
     const wrapper = $wrapper.get(0);
 
-    if (this.params.backgroundColor) {
+    if (this.params.backgroundColor && this.params.model?.file?.path) {
       /*
        * Using custom CSS variables to allow easier customization.
        * When running standalone, the default background color of .h5p-content
