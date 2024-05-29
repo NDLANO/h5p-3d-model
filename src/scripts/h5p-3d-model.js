@@ -72,8 +72,36 @@ export default class ThreeDModel extends H5P.EventDispatcher {
    * @param {H5P.jQuery} $wrapper Content's container.
    */
   attach($wrapper) {
-    $wrapper.get(0).classList.add('h5p-3d-model');
-    $wrapper.get(0).appendChild(this.dom);
+    const wrapper = $wrapper.get(0);
+
+    if (this.params.backgroundColor) {
+      /*
+       * Using custom CSS variables to allow easier customization.
+       * When running standalone, the default background color of .h5p-content
+       * will be overridden to allow true transparency in webpages.
+       */
+      const h5pContent = wrapper.closest('.h5p-content');
+
+      if (wrapper.classList.contains('h5p-standalone') && h5pContent) {
+        h5pContent.style.setProperty(
+          '--h5p-3d-model-background-color', this.params.backgroundColor
+        );
+
+        h5pContent.style.backgroundColor =
+          'var(--h5p-3d-model-background-color)';
+      }
+      else {
+        wrapper.style.setProperty(
+          '--h5p-3d-model-background-color', this.params.backgroundColor
+        );
+      }
+
+      wrapper.style.backgroundColor =
+        'var(--h5p-3d-model-background-color)';
+    }
+
+    wrapper.classList.add('h5p-3d-model');
+    wrapper.appendChild(this.dom);
   }
 
   /**
