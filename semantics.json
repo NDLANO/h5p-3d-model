@@ -4,6 +4,7 @@
     "type": "group",
     "label": "Model",
     "expanded": true,
+    "importance": "high",
     "fields": [
       {
         "name": "file",
