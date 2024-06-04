@@ -13,6 +13,13 @@ html {
   color: $color-text;
   width: 100%;
 
+  &.has-background-image {
+    background-image: var(--h5p-3d-model-background-image);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
   .h5p-3d-model-main {
     height: inherit;
     margin: auto;

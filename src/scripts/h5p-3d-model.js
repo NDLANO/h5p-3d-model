@@ -47,7 +47,7 @@ export default class ThreeDModel extends H5P.EventDispatcher {
 
     // Optional poster
     const poster = document.createElement('img');
-    if (this.params.model?.poster?.path) {
+    if (this.params.visuals?.poster?.path) {
       poster.addEventListener('load', () => {
         this.model.updateAspectRatio(
           poster.naturalWidth / poster.naturalHeight
@@ -56,7 +56,7 @@ export default class ThreeDModel extends H5P.EventDispatcher {
         this.trigger('resize');
       });
       H5P.setSource(
-        poster, { path: this.params.model.poster.path }, this.contentId
+        poster, { path: this.params.visuals.poster.path }, this.contentId
       );
     }
 
@@ -83,7 +83,24 @@ export default class ThreeDModel extends H5P.EventDispatcher {
   attach($wrapper) {
     const wrapper = $wrapper.get(0);
 
-    if (this.params.backgroundColor && this.params.model?.file?.path) {
+    if (this.params.visuals.backgroundImage && this.params.model?.file?.path) {
+      const backgroundImage = document.createElement('img');
+      if (this.params.visuals.backgroundImage.path) {
+        H5P.setSource(
+          backgroundImage,
+          { path: this.params.visuals.backgroundImage.path },
+          this.contentId
+        );
+      }
+
+      wrapper.classList.add('has-background-image');
+      wrapper.style.setProperty(
+        '--h5p-3d-model-background-image', `url(${backgroundImage.src})`
+      );
+    }
+    else if (
+      this.params.visuals.backgroundColor && this.params.model?.file?.path
+    ) {
       /*
        * Using custom CSS variables to allow easier customization.
        * When running standalone, the default background color of .h5p-content
@@ -93,7 +110,7 @@ export default class ThreeDModel extends H5P.EventDispatcher {
 
       if (wrapper.classList.contains('h5p-standalone') && h5pContent) {
         h5pContent.style.setProperty(
-          '--h5p-3d-model-background-color', this.params.backgroundColor
+          '--h5p-3d-model-background-color', this.params.visuals.backgroundColor
         );
 
         h5pContent.style.backgroundColor =
@@ -101,7 +118,7 @@ export default class ThreeDModel extends H5P.EventDispatcher {
       }
       else {
         wrapper.style.setProperty(
-          '--h5p-3d-model-background-color', this.params.backgroundColor
+          '--h5p-3d-model-background-color', this.params.visuals.backgroundColor
         );
       }
 

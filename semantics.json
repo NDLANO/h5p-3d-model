@@ -25,6 +25,34 @@
         "type": "text",
         "label": "Alternative text",
         "description": "Alternative text for screen readers."
+      }
+    ]
+  },
+  {
+    "name": "visuals",
+    "type": "group",
+    "label": "Visual settings",
+    "fields": [
+      {
+        "name": "backgroundImage",
+        "type": "image",
+        "label": "Background image",
+        "description": "Optional image that will be used for the background.",
+        "optional": true
+      },
+      {
+        "name": "backgroundColor",
+        "type": "text",
+        "label": "Background color",
+        "optional": true,
+        "default": "rgba(255, 255, 255, 1)",
+        "widget": "colorSelector",
+        "spectrum": {
+          "showInput": true,
+          "showInitial": true,
+          "showAlpha": true,
+          "preferredFormat": "rgb"
+        }
       },
       {
         "name": "poster",
@@ -34,20 +62,6 @@
         "optional": true
       }
     ]
-  },
-  {
-    "name": "backgroundColor",
-    "type": "text",
-    "label": "Background color",
-    "optional": true,
-    "default": "rgba(255, 255, 255, 1)",
-    "widget": "colorSelector",
-    "spectrum": {
-      "showInput": true,
-      "showInitial": true,
-      "showAlpha": true,
-      "preferredFormat": "rgb"
-    }
   },
   {
     "name": "size",

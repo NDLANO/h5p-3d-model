@@ -10,15 +10,24 @@
         {
           "label": "Alternative text",
           "description": "Alternative text for screen readers."
+        }
+      ]
+    },
+    {
+      "label": "Visual settings",
+      "fields": [
+        {
+          "label": "Background image",
+          "description": "Optional image that will be used for the background."
+        },
+        {
+          "label": "Background color"
         },
         {
           "label": "Poster image",
           "description": "Optional image that will be shown before the 3D model is loaded. This can be used to show a preview of the 3D model that is large and may need some time to load. Not that it makes only sense to add a poster image if the file is not too large in size itself."
         }
       ]
-    },
-    {
-      "label": "Background color"
     },
     {
       "label": "Size settings",
@@ -30,10 +39,6 @@
         {
           "label": "Maximum height",
           "description": "H5P will usually determine the height based on the width. Set a maximum height here in CSS units (px, rem, etc.). Please not that this will not influence the maximum height of the H5P content as a whole."
-        },
-        {
-          "label": "Poster image",
-          "description": "Optional image that will be shown before the 3D model is loaded. This can be used to show a preview of the 3D model that is large and may need some time to load. Not that it makes only sense to add a poster image if the file is not too large in size itself."
         }
       ]
     },
