@@ -14,6 +14,31 @@
       ]
     },
     {
+      "label": "Annotations",
+      "fields": [
+        {
+          "label": "Annotations",
+          "field": {
+            "label": "Annotation",
+            "fields": [
+              {
+                "label": "Id"
+              },
+              {
+                "label": "Text"
+              },
+              {
+                "label": "Surface"
+              }
+            ]
+          }
+        },
+        {
+          "label": "dummy"
+        }
+      ]
+    },
+    {
       "label": "Visual settings",
       "fields": [
         {

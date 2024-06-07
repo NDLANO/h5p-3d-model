@@ -5,7 +5,9 @@ import './threed-model-view.scss';
 export default class ThreeDModelView {
 
   constructor(params = {}, callbacks = {}) {
-    this.params = Util.extend({}, params);
+    this.params = Util.extend({
+      annotations: []
+    }, params);
 
     this.callbacks = Util.extend({
       onModelLoaded: () => {}
@@ -41,6 +43,7 @@ export default class ThreeDModelView {
     dom.style.maxWidth = params.size?.maxWidth ?? '';
     dom.style.maxHeight = params.size?.maxHeight ?? '';
     dom.setAttribute('camera-controls', '');
+    dom.setAttribute('disable-tap', '');
 
     if (params.poster) {
       dom.setAttribute('poster', params.poster);
@@ -50,6 +53,24 @@ export default class ThreeDModelView {
       dom.setAttribute('alt', params.alt);
     }
     dom.setAttribute('a11y', this.buildA11y(params.a11y));
+
+    params.annotations.forEach((annotation, index) => {
+      if (!annotation.surface || !annotation.text) {
+        return;
+      }
+
+      const hotspot = document.createElement('div');
+      hotspot.classList.add('hotspot');
+      hotspot.setAttribute('slot', `hotspot-${index}`);
+      hotspot.setAttribute('data-surface', annotation.surface);
+
+      const label = document.createElement('span');
+      label.classList.add('hotspot-label');
+      label.textContent = annotation.text;
+      hotspot.appendChild(label);
+
+      dom.appendChild(hotspot);
+    });
 
     dom.addEventListener('load', () => {
       this.updateAspectRatio();

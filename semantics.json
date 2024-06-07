@@ -24,7 +24,56 @@
         "name": "alt",
         "type": "text",
         "label": "Alternative text",
-        "description": "Alternative text for screen readers."
+        "description": "Alternative text for screen readers.",
+        "length": 5000
+      }
+    ]
+  },
+  {
+    "name": "annotations",
+    "type": "group",
+    "label": "Annotations",
+    "widget": "threeDModelAnnotations",
+    "threeDModelAnnotations": {
+      "modelFileField": "model/file"
+    },
+    "fields": [
+      {
+        "name": "annotations",
+        "type": "list",
+        "label": "Annotations",
+        "item": "annotation",
+        "min": "1",
+        "field": {
+          "type": "group",
+          "name": "annotation",
+          "label": "Annotation",
+          "fields": [
+            {
+              "name": "id",
+              "type": "text",
+              "label": "Id",
+              "widget": "none"
+            },
+            {
+              "name": "text",
+              "type": "text",
+              "label": "Text"
+            },
+            {
+              "name": "surface",
+              "type": "text",
+              "label": "Surface",
+              "widget": "none"
+            }
+          ]
+        }
+      },
+      {
+        "name": "dummy",
+        "type": "boolean",
+        "label": "dummy",
+        "widget": "none"
       }
     ]
   },

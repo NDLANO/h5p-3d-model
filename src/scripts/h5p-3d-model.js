@@ -63,6 +63,7 @@ export default class ThreeDModel extends H5P.EventDispatcher {
     this.model = new ThreeDModelView({
       src: element.src,
       poster: poster.src,
+      annotations: this.params.annotations?.annotations,
       className: 'h5p-3d-model-main',
       alt: this.params.model.alt,
       size: this.params.size,
