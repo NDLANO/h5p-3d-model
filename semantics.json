@@ -35,7 +35,10 @@
     "label": "Annotations",
     "widget": "threeDModelAnnotations",
     "threeDModelAnnotations": {
-      "modelFileField": "model/file"
+      "modelFileField": "model/file",
+      "annotationIdField": "id",
+      "annotationTextField": "text",
+      "annotationSurfaceField": "surface"
     },
     "fields": [
       {
