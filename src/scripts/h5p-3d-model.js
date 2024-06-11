@@ -22,6 +22,12 @@ export default class ThreeDModel extends H5P.EventDispatcher {
 
     this.params = H5PUtil.processParameters(this.params);
 
+    if (this.params.annotations?.annotations) {
+      this.params.annotations.annotations.forEach((annotation) => {
+        annotation.text = Util.purifyHTML(annotation.text);
+      });
+    }
+
     this.contentId = contentId;
     this.extras = extras;
 
