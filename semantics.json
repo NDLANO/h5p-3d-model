@@ -45,6 +45,7 @@
         "name": "annotations",
         "type": "list",
         "label": "Annotations",
+        "description": "Add annotation labels to the 3D model by typing their their text and using the adjacent button.",
         "item": "annotation",
         "min": "1",
         "field": {
