@@ -1,5 +1,8 @@
 @import "./colors";
 
+$icon-button-fullscreen-enter: url("@assets/button-fullscreen-icon-enter-blue.svg");
+$icon-button-fullscreen-exit: url("@assets/button-fullscreen-icon-exit-blue.svg");
+
 html {
   box-sizing: border-box;
 }
@@ -18,6 +21,48 @@ html {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+  }
+
+  .h5p-3d-model-button-fullscreen {
+    background-color: $color-primary-5;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 0.8em 0.8em;
+    border: 1px solid $color-primary-30;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 1.75em;
+    top: 0.5em;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    left: 0.5em;
+    transition: border-color 100ms, opacity 100ms;
+    width: 1.75em;
+
+    &:focus {
+      outline: #000 auto 1px;
+    }
+
+    &:hover {
+      background-color: $color-primary-10;
+    }
+
+    &:active {
+      background-color: $color-primary-10;
+    }
+  }
+
+  &.h5p-fullscreen {
+    .h5p-3d-model-button-fullscreen {
+      background-image: $icon-button-fullscreen-exit;
+    }
+  }
+
+  &:not(.h5p-fullscreen) {
+    .h5p-3d-model-button-fullscreen {
+      background-image: $icon-button-fullscreen-enter;
+    }
   }
 
   .h5p-3d-model-main {

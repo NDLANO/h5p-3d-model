@@ -15,6 +15,8 @@ export default class ThreeDModelView {
 
     this.dom = this.buildDOM(this.params);
 
+    this.setMaxSize(this.params.size);
+
     // Set model source, initiates loading the model
     this.dom.setAttribute('src', this.params.src);
   }
@@ -40,8 +42,7 @@ export default class ThreeDModelView {
     if (params.className) {
       dom.classList.add(params.className);
     }
-    dom.style.maxWidth = params.size?.maxWidth ?? '';
-    dom.style.maxHeight = params.size?.maxHeight ?? '';
+
     dom.setAttribute('camera-controls', '');
     dom.setAttribute('disable-tap', '');
 
@@ -92,6 +93,17 @@ export default class ThreeDModelView {
    */
   hide() {
     this.dom.classList.add('display-none');
+  }
+
+  /**
+   * Set maximum size.
+   * @param {object} size Size.
+   * @param {number|undefined} size.maxWidth Maximum width or undefined to reset.
+   * @param {number|undefined} size.maxHeight Maximum height or undefined to reset.
+   */
+  setMaxSize(size = {}) {
+    this.dom.style.maxWidth = size.maxWidth ?? '';
+    this.dom.style.maxHeight = size.maxHeight ?? '';
   }
 
   /**

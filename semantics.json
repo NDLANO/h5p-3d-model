@@ -253,6 +253,20 @@
         "label": "Interaction prompt",
         "description": "Text that is read out to the user when the 3D model is focused and the user can interact with it.",
         "default": "Use mouse, touch or arrow keys to move to interact with the 3D model."
+      },
+      {
+        "name": "buttonFullscreenEnter",
+        "type": "text",
+        "label": "Text for screen readers. Title for full screen button (enter)",
+        "importance": "low",
+        "default": "Enter full screen mode"
+      },
+      {
+        "name": "buttonFullscreenExit",
+        "type": "text",
+        "label": "Text for screen readers. Title for full screen button (exit)",
+        "importance": "low",
+        "default": "Exit full screen mode"
       }
     ]
   }

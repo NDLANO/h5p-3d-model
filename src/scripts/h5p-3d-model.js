@@ -37,6 +37,8 @@ export default class ThreeDModel extends H5P.EventDispatcher {
 
     this.previousState = extras?.previousState || {};
 
+    this.isFullscreenAllowed = this.isRoot() && H5P.fullscreenSupported;
+
     if (!this.params.model?.file?.path) {
       const messageBox = new MessageBox({
         text: this.dictionary.get('l10n.noModel')
@@ -88,7 +90,7 @@ export default class ThreeDModel extends H5P.EventDispatcher {
    * @param {H5P.jQuery} $wrapper Content's container.
    */
   attach($wrapper) {
-    const wrapper = $wrapper.get(0);
+    this.container = $wrapper.get(0);
 
     if (this.params.visuals.backgroundImage && this.params.model?.file?.path) {
       const backgroundImage = document.createElement('img');
@@ -100,8 +102,8 @@ export default class ThreeDModel extends H5P.EventDispatcher {
         );
       }
 
-      wrapper.classList.add('has-background-image');
-      wrapper.style.setProperty(
+      this.container.classList.add('has-background-image');
+      this.container.style.setProperty(
         '--h5p-3d-model-background-image', `url(${backgroundImage.src})`
       );
     }
@@ -113,9 +115,9 @@ export default class ThreeDModel extends H5P.EventDispatcher {
        * When running standalone, the default background color of .h5p-content
        * will be overridden to allow true transparency in webpages.
        */
-      const h5pContent = wrapper.closest('.h5p-content');
+      const h5pContent = this.container.closest('.h5p-content');
 
-      if (wrapper.classList.contains('h5p-standalone') && h5pContent) {
+      if (this.container.classList.contains('h5p-standalone') && h5pContent) {
         h5pContent.style.setProperty(
           '--h5p-3d-model-background-color', this.params.visuals.backgroundColor
         );
@@ -124,17 +126,80 @@ export default class ThreeDModel extends H5P.EventDispatcher {
           'var(--h5p-3d-model-background-color)';
       }
       else {
-        wrapper.style.setProperty(
+        this.container.style.setProperty(
           '--h5p-3d-model-background-color', this.params.visuals.backgroundColor
         );
       }
 
-      wrapper.style.backgroundColor =
+      this.container.style.backgroundColor =
         'var(--h5p-3d-model-background-color)';
     }
 
-    wrapper.classList.add('h5p-3d-model');
-    wrapper.appendChild(this.dom);
+    this.container.classList.add('h5p-3d-model');
+
+    this.container.appendChild(this.dom);
+
+    if (this.isFullscreenAllowed) {
+      this.buttonFullscreen = document.createElement('button');
+      this.buttonFullscreen.classList.add('h5p-3d-model-button-fullscreen');
+      this.buttonFullscreen.addEventListener('click', () => {
+        this.handleFullscreenClicked();
+      });
+      this.container.appendChild(this.buttonFullscreen);
+
+      this.on('enterFullScreen', () => {
+        this.buttonFullscreen.setAttribute(
+          'aria-label', 'a11y.buttonFullscreenExit'
+        );
+        this.model.setMaxSize();
+      });
+
+      this.on('exitFullScreen', () => {
+        this.buttonFullscreen.setAttribute(
+          'aria-label', 'a11y.buttonFullscreenEnter'
+        );
+        this.model.setMaxSize(this.params.size);
+      });
+    }
+  }
+
+  /**
+   * Handle fullscreen button clicked.
+   */
+  handleFullscreenClicked() {
+    setTimeout(() => {
+      this.toggleFullscreen();
+    }, 300); // Some devices don't register user gesture before call to to requestFullscreen
+  }
+
+  /**
+   * Toggle fullscreen button.
+   * @param {string|boolean} state enter|false for enter, exit|true for exit.
+   */
+  toggleFullscreen(state) {
+    if (!this.container || !this.isFullscreenAllowed) {
+      return;
+    }
+
+    if (typeof state === 'string') {
+      if (state === 'enter') {
+        state = false;
+      }
+      else if (state === 'exit') {
+        state = true;
+      }
+    }
+
+    if (typeof state !== 'boolean') {
+      state = !H5P.isFullscreen;
+    }
+
+    if (state) {
+      H5P.fullScreen(H5P.jQuery(this.container), this);
+    }
+    else {
+      H5P.exitFullScreen();
+    }
   }
 
   /**
