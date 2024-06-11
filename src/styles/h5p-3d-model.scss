@@ -24,7 +24,7 @@ html {
   }
 
   .h5p-3d-model-button-fullscreen {
-    background-color: $color-primary-5;
+    background-color: #f3f8fd;
     background-position: center;
     background-repeat: no-repeat;
     background-size: 0.8em 0.8em;
@@ -45,11 +45,11 @@ html {
     }
 
     &:hover {
-      background-color: $color-primary-10;
+      background-color: #e8f1fb;
     }
 
     &:active {
-      background-color: $color-primary-10;
+      background-color: #e8f1fb;
     }
   }
 
