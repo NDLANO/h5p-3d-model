@@ -1,5 +1,10 @@
 # H5P 3D Model
-Simple viewer for 3D models in H5P
+Simple viewer for 3D models in H5P.
+
+## Future options:
+- As a user, I can choose what animation to play if there are multiple
+  animations.
+- As a user, I will see a slider that I can use to seek in animations.
 
 ## Getting started
 Clone this repository with git and check out the branch that you are interested
