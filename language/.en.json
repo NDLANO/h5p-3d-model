@@ -156,6 +156,14 @@
         {
           "label": "Text for screen readers. Title for full screen button (exit)",
           "default": "Exit full screen mode"
+        },
+        {
+          "label": "Text for screen readers. Title for play button",
+          "default": "Play animation"
+        },
+        {
+          "label": "Text for screen readers. Title for pause button",
+          "default": "Pause animation"
         }
       ]
     }

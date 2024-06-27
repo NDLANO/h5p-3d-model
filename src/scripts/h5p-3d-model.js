@@ -77,8 +77,11 @@ export default class ThreeDModel extends H5P.EventDispatcher {
       size: this.params.size,
       a11y: this.params.a11y
     }, {
-      onModelLoaded: () => {
-        this.trigger('resize');
+      onModelLoaded: (params) => {
+        this.handleModelLoaded(params);
+      },
+      onPlayStateChanged: (isPlaying) => {
+        this.handlePlayStateChanged(isPlaying);
       }
     });
 
@@ -139,9 +142,26 @@ export default class ThreeDModel extends H5P.EventDispatcher {
 
     this.container.appendChild(this.dom);
 
+    this.buttonPlay = document.createElement('button');
+    this.buttonPlay.classList.add('h5p-3d-model-button');
+    this.buttonPlay.classList.add('h5p-3d-model-button-play');
+    this.buttonPlay.classList.add('display-none');
+    this.buttonPlay.setAttribute(
+      'aria-label', this.dictionary.get('a11y.buttonPlay')
+    );
+    this.buttonPlay.addEventListener('click', () => {
+      this.model.togglePlay();
+    });
+    this.container.appendChild(this.buttonPlay);
+
     if (this.isFullscreenAllowed) {
+      this.buttonPlay.classList.add('has-fullscreen-button');
       this.buttonFullscreen = document.createElement('button');
+      this.buttonFullscreen.classList.add('h5p-3d-model-button');
       this.buttonFullscreen.classList.add('h5p-3d-model-button-fullscreen');
+      this.buttonFullscreen.setAttribute(
+        'aria-label', this.dictionary.get('a11y.buttonFullscreenEnter')
+      );
       this.buttonFullscreen.addEventListener('click', () => {
         this.handleFullscreenClicked();
       });
@@ -149,14 +169,14 @@ export default class ThreeDModel extends H5P.EventDispatcher {
 
       this.on('enterFullScreen', () => {
         this.buttonFullscreen.setAttribute(
-          'aria-label', 'a11y.buttonFullscreenExit'
+          'aria-label', this.dictionary.get('a11y.buttonFullscreenExit')
         );
         this.model.setMaxSize();
       });
 
       this.on('exitFullScreen', () => {
         this.buttonFullscreen.setAttribute(
-          'aria-label', 'a11y.buttonFullscreenEnter'
+          'aria-label', this.dictionary.get('a11y.buttonFullscreenEnter')
         );
         this.model.setMaxSize(this.params.size);
       });
@@ -200,6 +220,38 @@ export default class ThreeDModel extends H5P.EventDispatcher {
     else {
       H5P.exitFullScreen();
     }
+  }
+
+  /**
+   * Handle animation play state changed.
+   * @param {boolean} isPlaying True if playing, else false.
+   */
+  handlePlayStateChanged(isPlaying) {
+    this.buttonPlay.classList.toggle('playing', isPlaying);
+
+    if (isPlaying) {
+      this.buttonPlay.setAttribute(
+        'aria-label', this.dictionary.get('a11y.buttonPause')
+      );
+    }
+    else {
+      this.buttonPlay.setAttribute(
+        'aria-label', this.dictionary.get('a11y.buttonPlay')
+      );
+    }
+  }
+
+  /**
+   * Handle model loaded.
+   * @param {object} params Parameters.
+   * @param {string[]} [params.availableAnimations] Available animation names.
+   */
+  handleModelLoaded(params) {
+    if (params.availableAnimations.length) {
+      this.buttonPlay.classList.remove('display-none');
+    }
+
+    this.trigger('resize');
   }
 
   /**

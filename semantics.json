@@ -267,6 +267,20 @@
         "label": "Text for screen readers. Title for full screen button (exit)",
         "importance": "low",
         "default": "Exit full screen mode"
+      },
+      {
+        "name": "buttonPlay",
+        "type": "text",
+        "label": "Text for screen readers. Title for play button",
+        "importance": "low",
+        "default": "Play animation"
+      },
+      {
+        "name": "buttonPause",
+        "type": "text",
+        "label": "Text for screen readers. Title for pause button",
+        "importance": "low",
+        "default": "Pause animation"
       }
     ]
   }

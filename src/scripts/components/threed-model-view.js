@@ -10,7 +10,8 @@ export default class ThreeDModelView {
     }, params);
 
     this.callbacks = Util.extend({
-      onModelLoaded: () => {}
+      onModelLoaded: () => {},
+      onPlayStateChanged: () => {}
     }, callbacks);
 
     this.dom = this.buildDOM(this.params);
@@ -75,7 +76,19 @@ export default class ThreeDModelView {
 
     dom.addEventListener('load', () => {
       this.updateAspectRatio();
-      this.callbacks.onModelLoaded();
+      this.callbacks.onModelLoaded({
+        availableAnimations: dom.availableAnimations ?? []
+      });
+    });
+
+    dom.addEventListener('play', () => {
+      this.isPlayingState = true;
+      this.callbacks.onPlayStateChanged(true);
+    });
+
+    dom.addEventListener('pause', () => {
+      this.isPlayingState = false;
+      this.callbacks.onPlayStateChanged(false);
     });
 
     return dom;
@@ -93,6 +106,18 @@ export default class ThreeDModelView {
    */
   hide() {
     this.dom.classList.add('display-none');
+  }
+
+  /**
+   * Toggle play.
+   */
+  togglePlay() {
+    if (this.isPlayingState) {
+      this.dom.pause?.();
+    }
+    else {
+      this.dom.play?.();
+    }
   }
 
   /**
