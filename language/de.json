@@ -29,7 +29,7 @@
                 "label": "Text"
               },
               {
-                "Bezeichnung": "Oberfläche"
+                "label": "Oberfläche"
               }
             ]
           }
@@ -50,7 +50,7 @@
           "label": "Hintergrundfarbe"
         },
         {
-          " label": "Posterbild",
+          "label": "Posterbild",
           "description": "Optionales Bild, das angezeigt wird, bevor das 3D-Modell geladen wird. Dies kann verwendet werden, um eine Vorschau des 3D-Modells zu zeigen, das groß ist und möglicherweise einige Zeit zum Laden benötigt. Es macht nur dann Sinn, ein Posterbild hinzuzufügen, wenn die Datei selbst nicht zu groß ist."
         }
       ]
