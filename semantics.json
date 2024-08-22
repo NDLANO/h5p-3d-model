@@ -112,7 +112,7 @@
         "name": "poster",
         "type": "image",
         "label": "Poster image",
-        "description": "Optional image that will be shown before the 3D model is loaded. This can be used to show a preview of the 3D model that is large and may need some time to load. Not that it makes only sense to add a poster image if the file is not too large in size itself.",
+        "description": "Optional image that will be shown before the 3D model is loaded. This can be used to show a preview of the 3D model that is large and may need some time to load. Note that it makes only sense to add a poster image if the file is not too large in size itself.",
         "optional": true
       }
     ]
@@ -126,14 +126,14 @@
         "name": "maxWidth",
         "type": "text",
         "label": "Maximum width",
-        "description": "H5P will usually scale content to full width. Set a maximum width here in CSS units (px, rem, etc.). Please not that this will not influence the maximum width of the H5P content as a whole.",
+        "description": "H5P will usually scale content to full width. Set a maximum width here in CSS units (px, rem, etc.). Please note that this will not influence the maximum width of the H5P content as a whole.",
         "optional": true
       },
       {
         "name": "maxHeight",
         "type": "text",
         "label": "Maximum height",
-        "description": "H5P will usually determine the height based on the width. Set a maximum height here in CSS units (px, rem, etc.). Please not that this will not influence the maximum height of the H5P content as a whole.",
+        "description": "H5P will usually determine the height based on the width. Set a maximum height here in CSS units (px, rem, etc.). Please note that this will not influence the maximum height of the H5P content as a whole.",
         "optional": true
       }
     ]
