@@ -57,7 +57,7 @@
     },
     {
       "label": "Größeneinstellungen",
-      "felder": [
+      "fields": [
         {
           "label": "Maximale Breite",
           "description": "H5P skaliert den Inhalt normalerweise auf die volle Breite. Legen hier eine maximale Breite in CSS-Einheiten (px, rem, etc.) fest. Bitte beachte, dass dies keinen Einfluss auf die maximale Breite des H5P-Inhalts als Ganzes hat."
@@ -83,7 +83,7 @@
     },
     {
       "label": "Texte zur Barrierefreiheit",
-      "felder": [
+      "fields": [
         {
           "label": "Vorderseite des 3D-Modells",
           "description": "Alternativer Text für die Vorderseite des 3D-Modells.",
@@ -146,7 +146,7 @@
         },
         {
           "label": "Interaktionsaufforderung",
-          " description": "Text, der den Benutzenden vorgelesen wird, wenn das 3D-Modell fokussiert ist und die Benutzenden damit interagieren können.",
+          "description": "Text, der den Benutzenden vorgelesen wird, wenn das 3D-Modell fokussiert ist und die Benutzenden damit interagieren können.",
           "default": "Bewege mit der Maus, durch Berührung oder mit den Pfeiltasten, um mit dem 3D-Modell zu interagieren."
         },
         {
@@ -159,7 +159,7 @@
         },
         {
           "label": "Text für Bildschirmleser. Titel für die Wiedergabetaste",
-          " default": "Animation abspielen"
+          "default": "Animation abspielen"
         },
         {
           "label": "Text für Bildschirmleser. Titel für Pausentaste",
