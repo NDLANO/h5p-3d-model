@@ -154,7 +154,8 @@
         "name": "dummy",
         "type": "text",
         "label": "dummy",
-        "default": "dummy"
+        "default": "dummy",
+        "widget": "none"
       }
     ]
   },
