@@ -1,4 +1,6 @@
-import '@google/model-viewer';
+if (!window.__THREE__) {
+  import('@google/model-viewer');
+}
 import  Util from '@services/util.js';
 import './threed-model-view.scss';
 
