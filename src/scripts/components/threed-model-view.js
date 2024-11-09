@@ -1,4 +1,5 @@
-if (!window.__THREE__) {
+if (!window.__THREE__ && !window.H5PThreedModelViewerLoaded) {
+  window.H5PThreedModelViewerLoaded = true;
   import('@google/model-viewer');
 }
 import  Util from '@services/util.js';
