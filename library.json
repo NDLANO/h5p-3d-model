@@ -3,7 +3,7 @@
   "description": "Simple 3D model viewer",
   "majorVersion": 1,
   "minorVersion": 0,
-  "patchVersion": 3,
+  "patchVersion": 4,
   "runnable": 1,
   "author": "NDLA, Oliver Tacke",
   "license": "MIT",
