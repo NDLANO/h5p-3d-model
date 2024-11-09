@@ -1,4 +1,4 @@
-@import "./colors";
+@use "./colors";
 
 $icon-button-fullscreen-enter: url("@assets/button-fullscreen-icon-enter-blue.svg");
 $icon-button-fullscreen-exit: url("@assets/button-fullscreen-icon-exit-blue.svg");
@@ -10,8 +10,8 @@ html {
 }
 
 .h5p-3d-model {
-  background-color: $color-background;
-  color: $color-text;
+  background-color: colors.$color-background;
+  color: colors.$color-text;
   width: 100%;
 
   &.has-background-image {
@@ -28,7 +28,7 @@ html {
     background-position: center;
     background-repeat: no-repeat;
     background-size: 1rem;
-    border: 1px solid $color-primary-30;
+    border: 1px solid colors.$color-primary-30;
     border-radius: 50%;
     cursor: pointer;
     height: var(--button-size);
