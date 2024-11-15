@@ -46,6 +46,7 @@ export default {
     dist: './src/entries/dist.js'
   },
   output: {
+    chunkFormat: false,
     filename: `${libraryName}.js`,
     path: _resolve(__dirname, 'dist'),
     clean: true

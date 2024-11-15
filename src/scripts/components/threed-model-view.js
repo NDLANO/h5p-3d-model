@@ -1,3 +1,8 @@
+
+/*
+ * This pseudo dynamic import requires `chunkFormat: false` to be set in the output object of webpack.config.js to avoid
+ * issues with chunk loading on H5P integrations that bundle scripts.
+ */
 if (!window.__THREE__ && !window.H5PThreedModelViewerLoaded) {
   window.H5PThreedModelViewerLoaded = true;
   import('@google/model-viewer');
