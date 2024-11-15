@@ -131,6 +131,7 @@ export default class ThreeDModelView {
    */
   setMaxSize(size = {}) {
     this.dom.style.maxWidth = size.maxWidth ?? '';
+    this.dom.style.minHeight = size.minHeight ?? '';
     this.dom.style.maxHeight = size.maxHeight ?? '';
   }
 
