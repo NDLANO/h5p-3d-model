@@ -99,6 +99,15 @@ export default class ThreeDModelView {
       this.callbacks.onPlayStateChanged(false);
     });
 
+    dom.addEventListener('keydown', (event) => {
+      if (event.key === '-') {
+        dom.zoom(-1);
+      }
+      else if (event.key === '+') {
+        dom.zoom(1);
+      }
+    });
+
     return dom;
   }
 
