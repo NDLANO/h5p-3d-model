@@ -6,6 +6,9 @@ import MessageBox from '@components/messageBox/message-box.js';
 
 import '@styles/h5p-3d-model.scss';
 
+/** @constant {number} Fullscreen timeout in milliseconds. */
+const FULLSCREEN_TIMEOUT_MS = 300;
+
 export default class ThreeDModel extends H5P.EventDispatcher {
   /**
    * @class
@@ -189,7 +192,7 @@ export default class ThreeDModel extends H5P.EventDispatcher {
   handleFullscreenClicked() {
     setTimeout(() => {
       this.toggleFullscreen();
-    }, 300); // Some devices don't register user gesture before call to to requestFullscreen
+    }, FULLSCREEN_TIMEOUT_MS); // Some devices don't register user gesture before call to to requestFullscreen
   }
 
   /**
