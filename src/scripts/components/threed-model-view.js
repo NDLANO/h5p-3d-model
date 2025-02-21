@@ -26,6 +26,7 @@ export default class ThreeDModelView {
 
     this.setMaxSize(this.params.size);
 
+    this.dom.setAttribute('loading', 'eager');
     // Set model source, initiates loading the model
     this.dom.setAttribute('src', this.params.src);
   }
