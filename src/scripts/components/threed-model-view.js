@@ -224,7 +224,7 @@ export default class ThreeDModelView {
     const a11yAttributes = {};
     a11yProps.forEach((prop) => {
       if (params[prop]) {
-        a11yAttributes[prop] = params[prop];
+        a11yAttributes[prop] = Util.purifyHTML(params[prop]);
       }
     });
 
