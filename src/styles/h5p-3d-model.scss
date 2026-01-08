@@ -10,6 +10,10 @@ html {
 }
 
 .h5p-3d-model {
+  --button-padding: 0.5rem;
+  --button-size: 2.25rem;
+  --main-min-height: calc(var(--button-size) + 2 * var(--button-padding));
+
   background-color: colors.$color-background;
   color: colors.$color-text;
   width: 100%;
@@ -22,8 +26,6 @@ html {
   }
 
   .h5p-3d-model-button {
-    --button-size: 2.25rem;
-    --button-padding: 0.5rem;
     background-color: #f3f8fd;
     background-position: center;
     background-repeat: no-repeat;
@@ -93,6 +95,7 @@ html {
   .h5p-3d-model-main {
     height: inherit;
     margin: auto;
+    min-height: var(--main-min-height);
     width: inherit;
   }
 }
