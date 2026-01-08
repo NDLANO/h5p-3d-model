@@ -1,6 +1,6 @@
 {
   "name": "h5p-3d-model",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Simple 3D model (viewer) for H5P",
   "private": true,
   "scripts": {
